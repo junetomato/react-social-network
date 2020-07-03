@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from './components/Header.jsx'
-import Navbar from './components/Navbar.jsx';
-import Profile from './components/Profile.jsx';
+import Header from './components/Header/Header.jsx'
+import Navbar from './components/Navbar/Navbar.jsx';
+import Profile from './components/Profile/Profile.jsx';
 import './App.css'
 
 function App() {
