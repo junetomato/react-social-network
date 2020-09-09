@@ -1,24 +1,9 @@
 import React from 'react'
 import classes from './Dialogs.module.css'
-import { NavLink } from 'react-router-dom'
+import DialogItem from './DialogItem/DialogItem'
+import Message from './Message/Message'
 
-function DialogItem( props ) {
-    let path = "/dialogs/" + props.id;
-
-    return (
-        <div className={ `${ classes.dialog } ${ classes.active }` }>
-            <NavLink to={ path } >{ props.name }</NavLink>
-        </div>
-    )
-}
-
-function Message( props ) {
-    return (
-        <div className={ classes.message }>{ props.message }</div>
-    )
-}
-
-function Dialogs( props ) {
+function Dialogs() {
 
     let dialogs = [
         { id: 1, name: 'Dmitrii' },
