@@ -1,7 +1,19 @@
 .userItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     color: #fff;
+}
+
+.userItem:hover {
+    text-decoration: none;
 }
 
 .active {
     color: gold;
+}
+
+.avatar {
+    width: 30px;
+    margin-right: 5px;
 }

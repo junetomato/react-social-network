@@ -1,3 +1,46 @@
 .message {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    text-align: center;
     color: #fff;
+}
+
+.message::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: '';
+}
+
+.me {
+    align-self: flex-end;
+    margin-right: 30px;
+    background-color: darkgreen;
+}
+
+.me::before {
+    top: 6px;
+    right: -20px;
+    border-top: 10px solid darkgreen;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid darkgreen;
+}
+
+.person {
+    align-self: flex-start;
+    margin-left: 30px;
+    background-color: darkturquoise;
+    background-size: 100% 100%;
+}
+
+.person::before {
+    top: 6px;
+    left: -19px;
+    border-top: 10px solid darkturquoise;
+    border-right: 10px solid darkturquoise;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
 }

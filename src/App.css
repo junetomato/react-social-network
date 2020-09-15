@@ -13,3 +13,11 @@
     grid-area: c;
     background-color: cornflowerblue;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    vertical-align: top;
+}
