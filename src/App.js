@@ -13,23 +13,13 @@ function App( props ) {
     return (
         <div className='app-wrapper'>
             <Header />
-            <Navbar state={ props.state.sidebar } />
+            <Navbar state={ props.store.getSidebarData() } />
             <div className='app-wrapper-content'>
                 <Route path='/profile'
-                    render={ () => <Profile
-                        profilePage={ props.state.profilePage }
-                        addPost={ props.addPost }
-                        updateNewPostText={ props.updateNewPostText }
-                        />
-                    }
+                    render={ () => <Profile profilePage={ props.store.getProfilePageData() } /> }
                 />
                 <Route path='/dialogs'
-                    render={ () => <Dialogs
-                        dialogsPage={ props.state.dialogsPage }
-                        updateMessageText={ props.updateMessageText }
-                        sendMessage={ props.sendMessage }
-                        />
-                    }
+                    render={ () => <Dialogs dialogsPage={ props.store.getDialogsPage() } /> }
                 />
                 <Route path='/news' render={ () => <News /> } />
                 <Route path='/music' render={ () => <Music /> } />

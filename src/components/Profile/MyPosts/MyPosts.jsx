@@ -3,13 +3,13 @@ import classes from './MyPosts.module.css'
 import Post from './Post/Post'
 
 function MyPosts( props ) {
-    let postsElements = props.posts.map( p => <Post message={ p.message } likesCount={ p.likesCount } /> )
+    let postsElements = props.postsData.posts.map( p => <Post message={ p.message } likesCount={ p.likesCount } /> )
 
     let newPostElement = React.createRef()
 
     let onPostChange = () => {
         let text = newPostElement.current.value
-        props.updateNewPostText( text )
+        props.postsData.updateNewPostText( text )
     }
 
     return (
@@ -17,10 +17,10 @@ function MyPosts( props ) {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea onChange={ onPostChange } ref={ newPostElement } value={ props.newPostText } />
+                    <textarea onChange={ onPostChange } ref={ newPostElement } value={ props.postsData.newPostText } />
                 </div>
                 <div>
-                    <button onClick={ props.addPost }>Add post</button>
+                    <button onClick={ () => props.postsData.addPost() }>Add post</button>
                 </div>
             </div>
             <div className={ classes.posts }>
