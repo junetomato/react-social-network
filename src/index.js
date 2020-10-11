@@ -6,18 +6,24 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 
-let rerenderEntireTree = ( store ) => {
+let rerenderEntireTree = ( state ) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App store={ store } />
+                <App
+                    state={ state }
+                    addPost={ store.addPost.bind( store ) }
+                    updateNewPostText={ store.updateNewPostText.bind( store ) }
+                    sendMessage={ store.sendMessage.bind( store ) }
+                    updateMessageText={ store.updateMessageText.bind( store ) }
+                />
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById( 'root' )
     )
 }
 
-rerenderEntireTree( store )
+rerenderEntireTree( store.getState() )
 store.subscribe( rerenderEntireTree )
 
 // If you want your app to work offline and load faster, you can change

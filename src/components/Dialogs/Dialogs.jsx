@@ -11,7 +11,7 @@ function Dialogs( props ) {
 
     let updateMessageText = () => {
         let text = messageElement.current.value
-        props.dialogsPage.updateMessageText( text )
+        props.updateMessageText( text )
     }
 
     return (
@@ -28,7 +28,7 @@ function Dialogs( props ) {
                     value={ props.dialogsPage.messageText }
                     onChange={ updateMessageText }
                 />
-                <button type="button" onClick={ () => props.dialogsPage.sendMessage() }>Send</button>
+                <button type="button" onClick={ props.sendMessage }>Send</button>
             </div>
         </div>
     )

@@ -6,20 +6,6 @@ let store = {
                 { id: 2, message: 'It\'s my first post', likesCount: 11 },
             ],
             newPostText: '',
-            addPost() {
-                let newPost = {
-                    id: 5,
-                    message: this.newPostText,
-                    likesCount: 0,
-                }
-                this.posts.push( newPost )
-                this.newPostText = ''
-                store.rerenderEntireTree( store )
-            },
-            updateNewPostText( newText ) {
-                this.newPostText = newText
-                store.rerenderEntireTree( store )
-            },
         },
         dialogsPage: {
             dialogs: [
@@ -38,20 +24,6 @@ let store = {
                 { id: 5, message: 'Yo', type: 'person' },
             ],
             messageText: '',
-            updateMessageText( text ) {
-                this.messageText = text
-                store.rerenderEntireTree( store )
-            },
-            sendMessage () {
-                let newMessage = {
-                    id: 6,
-                    message: this.messageText,
-                    type: 'me',
-                }
-                this.messages.push( newMessage )
-                this.messageText = ''
-                store.rerenderEntireTree( store )
-            },
         },
         sidebar: {
             friends: [
@@ -61,20 +33,42 @@ let store = {
             ]
         }
     },
-    getSidebarData() {
-        return this._state.sidebar
+    getState() {
+        return this._state
     },
-    getProfilePageData() {
-        return this._state.profilePage
+    addPost() {
+        let newPost = {
+            id: 5,
+            message: this._state.profilePage.newPostText,
+            likesCount: 0,
+        }
+        this._state.profilePage.posts.push( newPost )
+        this._state.profilePage.newPostText = ''
+        this._callSubscriber( this._state )
     },
-    getDialogsPage() {
-        return this._state.dialogsPage
+    updateNewPostText( newText ) {
+        this._state.profilePage.newPostText = newText
+        this._callSubscriber( this._state )
     },
-    rerenderEntireTree() {
+    sendMessage() {
+        let newMessage = {
+            id: 6,
+            message: this._state.dialogsPage.messageText,
+            type: 'me',
+        }
+        this._state.dialogsPage.messages.push( newMessage )
+        this._state.dialogsPage.messageText = ''
+        this._callSubscriber( this._state )
+    },
+    updateMessageText( text ) {
+        this._state.dialogsPage.messageText = text
+        this._callSubscriber( this._state )
+    },
+    _callSubscriber() {
         console.log( 'rerender ^_^' )
     },
     subscribe( observer ) {
-        this.rerenderEntireTree = observer
+        this._callSubscriber = observer
     },
 }
 
