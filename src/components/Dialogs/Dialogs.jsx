@@ -9,9 +9,17 @@ function Dialogs( props ) {
 
     let messageElement = React.createRef()
 
+    let sendMessage = () => {
+        props.dispatch({ type: 'SEND-MESSAGE' })
+    }
+
     let updateMessageText = () => {
-        let text = messageElement.current.value
-        props.updateMessageText( text )
+        let text   = messageElement.current.value,
+            action = {
+                type: 'UPDATE-MESSAGE-TEXT',
+                text: text,
+            }
+        props.dispatch( action )
     }
 
     return (
@@ -28,7 +36,7 @@ function Dialogs( props ) {
                     value={ props.dialogsPage.messageText }
                     onChange={ updateMessageText }
                 />
-                <button type="button" onClick={ props.sendMessage }>Send</button>
+                <button type="button" onClick={ sendMessage }>Send</button>
             </div>
         </div>
     )
