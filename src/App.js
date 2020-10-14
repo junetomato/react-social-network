@@ -15,17 +15,14 @@ function App( props ) {
             <Header />
             <Navbar state={ props.state.sidebar } />
             <div className='app-wrapper-content'>
-                <Route path='/profile'
-                    render={ () => <Profile
+                <Route path='/profile' render={ () =>
+                    <Profile
                         profilePage={ props.state.profilePage }
                         dispatch={ props.dispatch }
                     /> }
                 />
-                <Route path='/dialogs'
-                    render={ () => <Dialogs
-                        dialogsPage={ props.state.dialogsPage }
-                        dispatch={ props.dispatch }
-                    /> }
+                <Route path='/dialogs' render={ () =>
+                    <Dialogs store={ props.store } /> }
                 />
                 <Route path='/news' render={ () => <News /> } />
                 <Route path='/music' render={ () => <Music /> } />
