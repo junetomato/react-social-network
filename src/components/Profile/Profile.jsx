@@ -1,13 +1,12 @@
 import React from 'react'
-// import classes from './Profile.module.css'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-function Profile( props ) {
+function Profile() {
     return (
         <div>
             <ProfileInfo />
-            <MyPostsContainer store={ props.store } />
+            <MyPostsContainer />
         </div>
     )
 }
