@@ -8,9 +8,7 @@ function mapStateToProps( state ) {
 }
 
 function mapDispatchToProps( dispatch ) {
-    return {
-
-    }
+    return
 }
 
 const FriendsContainer = connect( mapStateToProps, mapDispatchToProps )( Friends )
