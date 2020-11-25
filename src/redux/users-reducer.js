@@ -9,7 +9,6 @@ let initialState = {
 function usersReducer( state = initialState, action ) {
     switch( action.type ) {
         case FOLLOW:
-            debugger
             return {
                 ...state,
                 users: state.users.map( u => {
